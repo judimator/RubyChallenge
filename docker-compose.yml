@@ -1,0 +1,42 @@
+version: '3'
+
+networks:
+  backend:
+    driver: ${NETWORKS_DRIVER}
+
+volumes:
+  postgres:
+    driver: ${VOLUMES_DRIVER}
+
+services:
+  postgresql:
+    build: ./docker/postgresql
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+    networks:
+      - backend
+    volumes:
+      - ./docker/postgresql/data:/var/lib/postgresql/data
+    expose:
+      - ${POSTGRES_PORT}
+  ruby:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgresql
+    networks:
+      - backend
+    links:
+      - postgresql
