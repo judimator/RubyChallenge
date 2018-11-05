@@ -6,9 +6,7 @@ class LoginController < Devise::SessionsController
   end
 
   def create
-    puts "TEEEEEEEEEEEEEEST"
-    # super
-
+    super
   end
 
   def destroy
