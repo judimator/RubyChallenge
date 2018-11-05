@@ -1,0 +1,31 @@
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag "signin" %>
+<% end %>
+
+<% content_for :container do %>
+  <%= form_for(resource, as: resource_name, url: login_path, html: {class: "form-signin"}) do |f| %>
+    <h2 class="form-signin-heading">Sign In</h2>
+
+    <%= f.label :email, class: "sr-only" %>
+    <%= f.email_field :email, autofocus: true, required: "required", placeholder: "Email address", class: "form-control" %>
+
+    <%= f.label :password, class: "sr-only" %>
+    <%= f.password_field :password, required: "required", placeholder: "Password", class: "form-control" %>
+
+    <% if devise_mapping.rememberable? -%>
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :remember_me %> Remember me
+        </label>
+      </div>
+    <% end -%>
+
+    <%= f.submit "Sign in", class: "btn btn-lg btn-primary btn-block" %>
+  <% end %>
+
+  <%- if devise_mapping.registerable? %>
+    <div class="login-register">
+      <%= link_to "Sign up", sign_up_path %><br />
+    </div>
+  <% end -%>
+<% end %>

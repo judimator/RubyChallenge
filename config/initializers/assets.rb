@@ -12,3 +12,9 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
+
+#TODO Find out, for what is it
+Rails.application.config.assets.precompile += %w( starter-template.css )
+Rails.application.config.assets.precompile += %w( signin.css )
+Rails.application.config.assets.precompile += %w( signup.css )
+Rails.application.config.assets.precompile += %w( highcharts.js )

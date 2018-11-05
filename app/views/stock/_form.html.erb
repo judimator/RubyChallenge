@@ -1,0 +1,32 @@
+<%= form_for(@stock, url: stock_new_path) do |f| %>
+  <div class="mb-3">
+    <%= label_tag(:name, "Name") %>
+    <%= f.text_field :name, class: (@stock.errors.full_messages_for(:name).any? ? "form-control is-invalid" : "form-control") %>
+    <% @stock.errors.full_messages_for(:name).each do |message| %>
+      <div class="invalid-feedback"><%= message %></div>
+    <% end %>
+  </div>
+  <div class="mb-3">
+    <%= label_tag(:unit_price, "Unit price") %>
+    <%= f.text_field :unit_price, class: (@stock.errors.full_messages_for(:unit_price).any? ? "form-control is-invalid" : "form-control") %>
+    <% @stock.errors.full_messages_for(:unit_price).each do |message| %>
+      <span class="invalid-feedback"><%= message %></span>
+    <% end %>
+  </div>
+  <div class="mb-3">
+    <%= label_tag(:duration, "Duration") %>
+    <%= f.text_field :duration, class: (@stock.errors.full_messages_for(:duration).any? ? "form-control is-invalid" : "form-control") %>
+    <% @stock.errors.full_messages_for(:duration).each do |message| %>
+      <span class="invalid-feedback"><%= message %></span>
+    <% end %>
+  </div>
+  <div class="mb-3">
+    <%= label_tag(:interest, "Interest") %>
+    <%= f.text_field :interest, class: (@stock.errors.full_messages_for(:interest).any? ? "form-control is-invalid" : "form-control") %>
+    <% @stock.errors.full_messages_for(:interest).each do |message| %>
+      <span class="invalid-feedback"><%= message %></span>
+    <% end %>
+  </div>
+  <hr class="mb-4">
+  <%= f.submit "Create", class: "btn btn-primary btn-lg btn-block" %>
+<% end %>

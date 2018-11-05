@@ -1,3 +1,16 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'stock#index'
+
+  devise_for :users, skip: :all
+  devise_scope :user do
+    get 'login', to: 'login#new'
+    post 'login', to: 'login#create'
+    delete 'logout', to: 'login#destroy'
+    get 'sign-up', to: 'registration#new'
+    post 'sign-up', to: 'registration#create'
+  end
+
+  get 'stock/new', to: 'stock#new'
+  post 'stock/new', to: 'stock#create'
+  resources :stock, only: [:index, :show]
 end

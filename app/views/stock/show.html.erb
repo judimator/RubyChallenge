@@ -1,0 +1,45 @@
+<% content_for :container do %>
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <div class="row">
+        <div class="col-md-4">
+          Name:
+        </div>
+        <div class="col-md-8 text-md-right">
+          <%= @stock.name %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          Unit price:
+        </div>
+        <div class="col-md-8 text-md-right">
+          <%= @stock.unit_price %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          Interest:
+        </div>
+        <div class="col-md-8 text-md-right">
+          <%= @stock.interest %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          Duration:
+        </div>
+        <div class="col-md-8 text-md-right">
+          <%= @stock.duration %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h2 class="text-center mt-4">Stock valuation changes over its duration in years</h2>
+  <%= column_chart @stock.get_stock_valuation %>
+<% end %>
+
+<% content_for :javascript_top do %>
+  <%= javascript_include_tag "//www.google.com/jsapi" %>
+  <%= javascript_include_tag 'chartkick' %>
+<% end %>

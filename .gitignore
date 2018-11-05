@@ -70,3 +70,6 @@ yarn-debug.log*
 *.AppleDouble
 *.AppleDB
 *.AppleDesktop
+
+# Docker
+/docker/postgresql/data

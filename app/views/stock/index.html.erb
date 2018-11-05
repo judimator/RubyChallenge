@@ -1,0 +1,31 @@
+<% content_for :container do %>
+  <% if flash[:notice] %>
+    <div class="alert alert-success" role="alert">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">ID</th>
+        <th class="text-center" scope="col">Name</th>
+        <th class="text-center" scope="col">Unit price</th>
+        <th class="text-center" scope="col">Duration</th>
+        <th class="text-center" scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @stocks.each do |stock| %>
+        <tr class="text-center">
+          <th><%= stock.id %></th>
+          <td><%= stock.name %></td>
+          <td><%= stock.unit_price %></td>
+          <td><%= stock.duration %></td>
+          <td>
+            <%= link_to 'View', stock_path(stock) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
