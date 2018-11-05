@@ -11,7 +11,7 @@ class RegistrationController < Devise::RegistrationsController
 
   protected
     def configure_sign_up_params
-      devise_parameter_sanitizer.permit(:sign_up, :email, :password, :password_confirmation)
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
     end
 
     def after_sign_up_path_for(resource)
