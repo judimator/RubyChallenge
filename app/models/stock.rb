@@ -1,5 +1,8 @@
 class Stock < ApplicationRecord
   validates :name, :unit_price, :duration, :interest, presence: true
+  validates :duration, numericality: { only_integer: true }
+  validates_format_of :unit_price, :with => /\A[0-9]+(\.[0-9]{1,2})?\z/, :message => "Invalid format"
+  validates_format_of :interest, :with => /\A[0-9]+(\.[0-9]{1,2})?\z/, :message => "Invalid format"
 
   def get_stock_valuation
     duration = self.duration
