@@ -1,30 +1,27 @@
 <% content_for :stylesheet do %>
   <%= stylesheet_link_tag "signup" %>
 <% end %>
-<!-- TODO Change error's render -->
+
 <% content_for :container do %>
   <%= form_for(resource, as: resource_name, url: sign_up_path, html: {class: "form-signup"}) do |f| %>
     <h2 class="form-signup-heading">Sign Up</h2>
 
     <%= f.label :email, class: "sr-only" %>
-    <%= f.email_field :email, autofocus: true, placeholder: "Email address", class: "form-control" %>
-
-    <% if resource.errors[:email].any? %>
-      <%= resource.errors[:email].join(", ") %>
+    <%= f.email_field :email, autofocus: true, placeholder: "Email address",  class: (resource.errors.full_messages_for(:email).any? ? "form-control is-invalid" : "form-control") %>
+    <% resource.errors.full_messages_for(:email).each do |message| %>
+      <span class="invalid-feedback"><%= message %></span>
     <% end %>
 
     <%= f.label :password, class: "sr-only", for: "password" %>
-    <%= f.password_field :password, placeholder: "Password", class: "form-control", id: "password" %>
-
-    <% if resource.errors[:password].any? %>
-      <%= resource.errors[:password].join(", ") %>
+    <%= f.password_field :password, placeholder: "Password", class: (resource.errors.full_messages_for(:password).any? ? "form-control is-invalid" : "form-control") %>
+    <% resource.errors.full_messages_for(:password).each do |message| %>
+      <span class="invalid-feedback"><%= message %></span>
     <% end %>
 
     <%= f.label :password_confirmation, class: "sr-only", for: "confirm-password" %>
-    <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "form-control", id: "confirm-password" %>
-
-    <% if resource.errors[:password_confirmation].any? %>
-      <%= resource.errors[:password_confirmation].join(", ") %>
+    <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: (resource.errors.full_messages_for(:password_confirmation).any? ? "form-control is-invalid" : "form-control")  %>
+    <% resource.errors.full_messages_for(:password_confirmation).each do |message| %>
+      <span class="invalid-feedback"><%= message %></span>
     <% end %>
 
     <%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block" %>

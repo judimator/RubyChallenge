@@ -1,0 +1,26 @@
+AllCops:
+  Exclude:
+  - bin/**
+  - config/**
+  - config/**/**
+  - db/**
+  - lib/**
+  - log/**
+  - public/**
+  - storage/**
+  - spec/**
+  - spec/**/**
+  - tmp/**
+  - vendor/**
+
+Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 160
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/AbcSize:
+  Max: 30
