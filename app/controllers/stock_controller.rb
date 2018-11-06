@@ -10,7 +10,7 @@ class StockController < ApplicationController
   end
 
   def create
-    @stock = Stock.new
+    @stock = Stock.new(stock_params)
     if @stock.save
       flash[:success] = "Stock was added successfully!"
       redirect_to stock_index_path
