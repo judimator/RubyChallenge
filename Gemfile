@@ -39,7 +39,15 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
+  gem 'factory_bot_rails', '~> 4.8'
+  gem 'rspec-rails', '~> 3.7'
   gem 'rubocop', '~> 0.60.0', require: false
+  gem 'rubocop-rspec'
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '>= 2.15', '< 4.0'
+  gem 'selenium-webdriver'
+  # Easy installation and use of chromedriver to run system tests with Chrome
+  gem 'chromedriver-helper'
 end
 
 group :development do
@@ -52,14 +60,6 @@ group :development do
   # Enable debugger
   gem 'debase'
   gem 'ruby-debug-ide'
-end
-
-group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15', '< 4.0'
-  gem 'selenium-webdriver'
-  # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
 end
 
 gem 'chartkick', '~> 1.4', '>= 1.4.1'

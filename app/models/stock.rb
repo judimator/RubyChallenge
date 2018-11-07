@@ -6,6 +6,8 @@ class Stock < ApplicationRecord
   validates :unit_price, format: { with: /\A[0-9]+(\.[0-9]{1,2})?\z/, message: 'Invalid format' }
   validates :interest, format: { with: /\A[0-9]+(\.[0-9]{1,2})?\z/, message: 'Invalid format' }
 
+  belongs_to :user
+
   def stock_valuation
     duration = self.duration
     interest = self.interest

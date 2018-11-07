@@ -18,3 +18,13 @@ Run migrations and load fixtures
 docker-compose run ruby rake db:migrate
 docker-compose run ruby rake db:seed
 ```
+
+Rubocop
+```
+docker-compose run ruby rubocop
+```
+
+Tests
+```
+docker-compose run ruby rspec
+```
