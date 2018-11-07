@@ -12,7 +12,7 @@ class Stock < ApplicationRecord
     duration = self.duration
     interest = self.interest
     unit_price = self.unit_price
-    data = [0]
+    data = []
     current_unit_price = 0
 
     duration.times do |i|
