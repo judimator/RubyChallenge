@@ -18,7 +18,7 @@ class Stock < ApplicationRecord
     duration.times do |i|
       current_unit_price += (unit_price * interest / 100) + current_unit_price * interest / 100
 
-      data << [i+1, current_unit_price]
+      data << [i + 1, current_unit_price]
     end
 
     data
