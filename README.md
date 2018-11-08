@@ -1,4 +1,7 @@
 # Installation
+```
+Copy .env.dist to .env
+```
 Build docker's container
 ```
 docker-compose run ruby rails new . --force --database=postgresql

@@ -35,9 +35,13 @@ body {
 }
 
 .form-signup input {
-    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .login-register{
     text-align: center;
+}
+
+.invalid-feedback {
+     margin-top: 0;
 }
